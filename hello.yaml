@@ -1,0 +1,16 @@
+# hello.yaml
+name: hello
+environments:
+  - name: staging
+    path: "opta.yaml" # the file we created in previous step
+modules:
+  - type: k8s-service
+    name: hello
+    port:
+      http: 80
+    # from https://github.com/run-x/opta-examples/tree/main/hello-app
+    image: AUTO
+    healthcheck_path: "/"
+    # path on the load balancer to access this service
+    public_uri: "/hello"
+    
